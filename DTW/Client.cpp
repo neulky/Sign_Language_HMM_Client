@@ -1,5 +1,6 @@
-#include"Client.h"
+#include "Client.h"
 #include <winsock2.h>
+#include <cstring>
 
 SOCKET sockClient;
 
@@ -19,21 +20,27 @@ void Client::Connect()
 }
 
 //发送数据
-void Client::sendMessage(point sequence[], int count)
+void Client::sendMessage(point sequence[][MAXFRAME], int count[])
 {
 	string sendStr;
-	for (int i = 0; i < count; i++)
+	for (int i = 0; i < HAND_COUNT; i++)           //先左手0，后右手1
 	{
-		for (int j = 0; j < POINT_NUM_EACH_FRAME;j++)
-		switch (j)
+		for (int j = 0; j < count[i]; j++)
 		{
-		case 0: sendStr += to_string(sequence[i].x); sendStr += ','; break;
-		case 1: sendStr += to_string(sequence[i].y); sendStr += ','; break;
-		case 2: sendStr += to_string(sequence[i].z); break;
-		default: break;
+			for (int k = 0; k < POINT_NUM_EACH_FRAME; k++)
+				switch (k)
+			{
+				case 0: sendStr += to_string(sequence[i][j].x); sendStr += ','; break;
+				case 1: sendStr += to_string(sequence[i][j].y); sendStr += ','; break;
+				case 2: sendStr += to_string(sequence[i][j].z); break;
+				default: break;
+			}
+			sendStr += '@';
 		}
-		sendStr += '@';
+		if (i < (HAND_COUNT - 1))
+			sendStr += '#';
 	}
+
 
 	const char * message = sendStr.c_str();           //将string类型转换成char*
 	send(sockClient, message, strlen(message) + 1, 0); //发送消息
@@ -42,13 +49,10 @@ void Client::sendMessage(point sequence[], int count)
 //接收数据
 string Client::recvMessage()
 {
-	string result;
+	string result = "你好";
 	char receiveMessage[50] = {};
 	recv(sockClient, receiveMessage, 50, 0);
-	for (int i = 0; receiveMessage[i] != '\0'; i++)
-	{
-		result += receiveMessage[i];
-	}
+	result = receiveMessage;
 	return result;
 }
 
@@ -58,3 +62,5 @@ void Client::Close()
 	closesocket(sockClient);
 	WSACleanup();
 }
+
+

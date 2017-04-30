@@ -13,7 +13,7 @@ class Client
 
 public:
 	void Connect();
-	void sendMessage(point sequence[], int count);
+	void sendMessage(point sequence[][MAXFRAME], int count[]);
 	string recvMessage();
 	void Close();
 };

@@ -17,10 +17,10 @@ int StoreData(point * new_module, int newModuleFrameNum, int hand_flag, string f
 	ofstream outfile;
 	string moduleDataStr;
 	if (hand_flag == LEFT_HAND_FLAG)
-		sourceFile = "G:\\GitHubKinect\\HMM_Model_3\\Right_Train_Data\\2\\" + fileName;
+		sourceFile = "G:\\GitHubKinect\\HMM_Model_3\\Left_Train_Data\\Äã\\" + fileName;
 	else{
 		if (hand_flag == RIGHT_HAND_FLAG)
-			sourceFile = "G:\\GitHubKinect\\HMM_Model_3\\Right_Train_Data\\2\\" + fileName;
+			sourceFile = "G:\\GitHubKinect\\HMM_Model_3\\Right_Train_Data\\Äã\\" + fileName;
 		else
 			return 0;
 	}
