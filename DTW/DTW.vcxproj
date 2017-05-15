@@ -82,6 +82,8 @@
   <ItemGroup>
     <ClCompile Include="AcquireKinectData.cpp" />
     <ClCompile Include="Client.cpp" />
+    <ClCompile Include="Hog.cpp" />
+    <ClCompile Include="Pca.cpp" />
     <ClCompile Include="StoreData.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Speech.cpp" />
@@ -90,6 +92,8 @@
     <ClInclude Include="AcquireKinectData.h" />
     <ClInclude Include="Client.h" />
     <ClInclude Include="DataDefine.h" />
+    <ClInclude Include="Hog.h" />
+    <ClInclude Include="Pca.h" />
     <ClInclude Include="Speech.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

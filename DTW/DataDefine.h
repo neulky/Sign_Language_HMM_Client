@@ -4,6 +4,7 @@
 #include<math.h>
 #include<stdio.h>
 #include<string>
+#include<vector>
 using namespace std;
 
 #define DTWMAXNUM 5000
@@ -29,5 +30,6 @@ struct point{
 };
 
 int StoreData(point * new_module, int newModuleFrameNum, int hand_flag, string fileName);  //更新DTW模板中数据
+int StoreData(vector<vector<float>> descriptorSeq, string fileName);
 
 #endif // DataDefine_H

@@ -41,11 +41,30 @@ void Client::sendMessage(point sequence[][MAXFRAME], int count[])
 			sendStr += '#';
 	}
 
-
 	const char * message = sendStr.c_str();           //将string类型转换成char*
 	send(sockClient, message, strlen(message) + 1, 0); //发送消息
 }
 
+//发送数据
+void Client::sendMessage(vector<vector<float>> rightHandDescriptorSeq)
+{
+	string sendStr;
+	sendStr += '#';
+	for (int i = 0; i < rightHandDescriptorSeq.size(); i++)
+	{
+		for (int j = 0; j < rightHandDescriptorSeq[i].size(); j++)
+		{
+			sendStr += to_string(rightHandDescriptorSeq[i][j]);
+			sendStr += ',';
+		}
+		sendStr = sendStr.substr(0, sendStr.length() - 1);
+		sendStr += '@';
+	}
+
+	const char* message = sendStr.c_str();
+	send(sockClient, message, strlen(message) + 1, 0);
+
+}
 //接收数据
 string Client::recvMessage()
 {

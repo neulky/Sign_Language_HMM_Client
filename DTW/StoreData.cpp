@@ -4,6 +4,7 @@
 #include<fstream>
 #include<stdlib.h>
 #include<iomanip>
+#include<vector>
 
 using namespace std;
 
@@ -17,10 +18,10 @@ int StoreData(point * new_module, int newModuleFrameNum, int hand_flag, string f
 	ofstream outfile;
 	string moduleDataStr;
 	if (hand_flag == LEFT_HAND_FLAG)
-		sourceFile = "G:\\GitHubKinect\\HMM_Model_3\\Left_Train_Data\\Äã\\" + fileName;
+		sourceFile = "G:\\GitHubKinect\\HMM_Model_3\\Left_Train_Data\\ÎÒ\\" + fileName;
 	else{
 		if (hand_flag == RIGHT_HAND_FLAG)
-			sourceFile = "G:\\GitHubKinect\\HMM_Model_3\\Right_Train_Data\\Äã\\" + fileName;
+			sourceFile = "G:\\GitHubKinect\\HMM_Model_3\\Right_Train_Data\\ÎÒ\\" + fileName;
 		else
 			return 0;
 	}
@@ -48,6 +49,29 @@ int StoreData(point * new_module, int newModuleFrameNum, int hand_flag, string f
 
 	outfile << moduleDataStr;
 
+	outfile.close();
+
+	return 1;
+}
+
+int StoreData(vector<vector<float>> descriptorSeq, string fileName)
+{
+	string storeStr;
+	for(int i = 0; i < descriptorSeq.size(); i++)
+	{
+		for (int j = 0; j < descriptorSeq[i].size(); j++)
+		{
+			storeStr += to_string(descriptorSeq[i][j]);
+			storeStr += ',';
+		}
+		storeStr = storeStr.substr(0, storeStr.size() - 1);
+		storeStr += '@';
+	}
+	ofstream outfile;
+	string path = "G:\\GitHubKinect\\HMM_Model_3\\Right_Train_Data_Hog\\Ð»Ð»\\" + fileName;
+
+	outfile.open(path);
+	outfile << storeStr;
 	outfile.close();
 
 	return 1;

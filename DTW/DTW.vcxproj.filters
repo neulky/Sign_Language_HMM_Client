@@ -30,6 +30,12 @@
     <ClCompile Include="StoreData.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="Hog.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="Pca.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AcquireKinectData.h">
@@ -42,6 +48,12 @@
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="DataDefine.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Hog.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Pca.h">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>
